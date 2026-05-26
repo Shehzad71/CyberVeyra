@@ -41,6 +41,13 @@ const serviceNavItems = [
   ['Configuration Automation Services', '#configuration-automation'],
 ]
 
+const mobileServiceOptions = [
+  ['SME Services', '#sme-services'],
+  ['OT Services', '#ot-services'],
+  ['Specialist Services', '#specialist-services'],
+  ['Managed Services', '#managed-services'],
+]
+
 const smeServices = [
   ['Secure Infrastructure Project Services', ServerCog],
   ['Storage & NAS Solutions', Database],
@@ -59,6 +66,13 @@ const otServices = [
   ['Application Whitelisting & Malware Protection', Fingerprint],
   ['OT Cyber Services', Cpu],
   ['Managed OT Network & Cyber Services', RadioTower],
+]
+
+const managedServices = [
+  ['Network and Firewall Configuration Visibility', Network],
+  ['Backup, NAS and Recovery Readiness Checks', ShieldHalf],
+  ['OT Cybersecurity Review and Improvement Planning', Factory],
+  ['Monthly Advisory, Documentation and Action Tracking', FileCheck2],
 ]
 
 const specialistServices = [
@@ -116,19 +130,6 @@ const whyPoints = [
   'Monthly visibility and advisory',
   'Automation-ready approach',
   'Human-reviewed AI-assisted delivery',
-]
-
-const processSteps = [
-  'Discover',
-  'Design',
-  'Review',
-  'Configure',
-  'Test',
-  'Verify',
-  'Document',
-  'Monitor',
-  'Improve',
-  'Automate',
 ]
 
 function Button({ children, href, variant = 'primary', className = '' }) {
@@ -292,9 +293,30 @@ function Hero() {
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button href="#contact">Book a Free Consultation</Button>
-            <Button href="#sme-services" variant="secondary">
+            <Button href="#sme-services" variant="secondary" className="hidden sm:inline-flex">
               View Services
             </Button>
+            <details className="group relative sm:hidden">
+              <summary className="flex min-h-12 cursor-pointer list-none items-center justify-center gap-2 rounded-full border border-white/14 bg-white/[.04] px-5 py-3 text-sm font-semibold text-white transition hover:border-cyan-300/50 hover:bg-cyan-300/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300 [&::-webkit-details-marker]:hidden">
+                View Services
+                <ChevronRight
+                  aria-hidden="true"
+                  className="h-4 w-4 rotate-90 transition-transform duration-300 group-open:-rotate-90"
+                />
+              </summary>
+              <div className="absolute left-0 right-0 z-20 mt-3 rounded-[24px] border border-white/10 bg-[#07101a]/95 p-2 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
+                {mobileServiceOptions.map(([label, href]) => (
+                  <a
+                    key={label}
+                    href={href}
+                    className="flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-cyan-300/10 hover:text-white"
+                  >
+                    {label}
+                    <ChevronRight aria-hidden="true" className="h-4 w-4 text-cyan-200" />
+                  </a>
+                ))}
+              </div>
+            </details>
           </div>
         </div>
         <div className="relative mx-auto w-full max-w-xl">
@@ -422,7 +444,7 @@ function ServicesSection({ id, eyebrow, title, description, services }) {
 
 function SpecialistServices() {
   return (
-    <section className="px-4 py-20 sm:px-6 lg:px-8">
+    <section id="specialist-services" className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Specialist Services"
@@ -440,8 +462,12 @@ function SpecialistServices() {
               className="rounded-[32px] border border-white/10 bg-gradient-to-br from-white/[.07] to-cyan-300/[.04] p-7"
             >
               <Icon aria-hidden="true" className="h-8 w-8 text-cyan-200" />
-              <h3 className="mt-6 text-2xl font-semibold text-white">{title}</h3>
-              <p className="mt-4 leading-7 text-slate-300">{description}</p>
+              <h3 className="mt-6 text-lg font-semibold leading-7 text-white">
+                {title}
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-slate-400">
+                {description}
+              </p>
             </article>
           ))}
         </div>
@@ -452,36 +478,13 @@ function SpecialistServices() {
 
 function ManagedServices() {
   return (
-    <section id="managed-services" className="px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-8 rounded-[36px] border border-white/10 bg-white/[.045] p-7 sm:p-10 lg:grid-cols-[.8fr_1.2fr] lg:p-12">
-        <SectionHeading
-          align="left"
-          eyebrow="Managed Services"
-          title="Monthly visibility for networks, security and OT environments."
-        >
-          CyberVeyra can support ongoing advisory, configuration review,
-          monitoring improvement and change readiness for teams that need a
-          senior technical eye without building a full internal cybersecurity
-          function.
-        </SectionHeading>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {[
-            'Network and firewall configuration visibility',
-            'Backup, NAS and recovery readiness checks',
-            'OT cybersecurity review and improvement planning',
-            'Monthly advisory, documentation and action tracking',
-          ].map((item) => (
-            <div
-              key={item}
-              className="rounded-3xl border border-cyan-200/15 bg-cyan-300/[.06] p-5"
-            >
-              <CheckCircle2 aria-hidden="true" className="h-5 w-5 text-cyan-200" />
-              <p className="mt-4 font-medium leading-7 text-white">{item}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <ServicesSection
+      id="managed-services"
+      eyebrow="Managed Services"
+      title="Monthly visibility for networks, security and OT environments."
+      description="CyberVeyra supports ongoing advisory, configuration review, monitoring improvement and change readiness for teams that need a senior technical eye without building a full internal cybersecurity function."
+      services={managedServices}
+    />
   )
 }
 
@@ -553,32 +556,6 @@ function WhyCyberVeyra() {
                 <CheckCircle2 aria-hidden="true" className="h-4 w-4" />
               </span>
               <p className="font-medium leading-7 text-white">{point}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function DeliveryApproach() {
-  return (
-    <section className="px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <SectionHeading
-          eyebrow="Delivery Approach"
-          title="A disciplined path from discovery to automation."
-        />
-        <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-          {processSteps.map((step, index) => (
-            <div
-              key={step}
-              className="rounded-3xl border border-white/10 bg-white/[.04] p-5"
-            >
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-200/70">
-                {String(index + 1).padStart(2, '0')}
-              </p>
-              <h3 className="mt-5 text-xl font-semibold text-white">{step}</h3>
             </div>
           ))}
         </div>
@@ -808,9 +785,8 @@ function App() {
         />
         <SpecialistServices />
         <ManagedServices />
-        <Founder />
         <WhyCyberVeyra />
-        <DeliveryApproach />
+        <Founder />
         <ContactForm />
         <FinalCta />
       </main>
