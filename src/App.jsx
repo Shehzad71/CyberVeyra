@@ -275,7 +275,7 @@ function Hero() {
       <div className="absolute inset-x-0 bottom-0 -z-10 h-44 bg-gradient-to-t from-[#060b12] to-transparent" />
       <div className="absolute left-1/2 top-24 -z-10 h-[520px] w-[520px] -translate-x-1/2 rounded-full border border-cyan-200/10 bg-cyan-300/[.04] blur-3xl" />
       <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
-        <div className="max-w-4xl">
+        <div className="max-w-5xl">
           <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-200/20 bg-cyan-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100">
             <Sparkles aria-hidden="true" className="h-4 w-4" />
             Secure design. Correct configuration. Verified deployment.
@@ -321,7 +321,7 @@ function Hero() {
             </details>
           </div>
         </div>
-        <div className="relative mx-auto w-full max-w-xl">
+        <div className="relative mx-auto hidden w-full max-w-xl md:block">
           <div className="absolute inset-8 rounded-full bg-cyan-300/10 blur-3xl" />
           <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-white/[.05] p-4 shadow-2xl shadow-cyan-950/30 backdrop-blur">
             <div className="rounded-[28px] border border-white/10 bg-[#050b14] p-5">
