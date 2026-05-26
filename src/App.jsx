@@ -293,11 +293,6 @@ function Hero() {
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button href="#contact">Book a Free Consultation</Button>
-            <div className="hidden sm:block">
-              <Button href="#sme-services" variant="secondary">
-                View Services
-              </Button>
-            </div>
             <details className="group relative sm:hidden">
               <summary className="flex min-h-12 cursor-pointer list-none items-center justify-center gap-2 rounded-full border border-white/14 bg-white/[.04] px-5 py-3 text-sm font-semibold text-white transition hover:border-cyan-300/50 hover:bg-cyan-300/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300 [&::-webkit-details-marker]:hidden">
                 View Services
@@ -738,7 +733,7 @@ function Footer() {
             </p>
           </div>
         </div>
-        <div className="flex flex-wrap gap-4">
+        <div className="hidden flex-wrap gap-4 md:flex">
           {['SME Services', 'OT Services', 'Design Reviews', 'Contact'].map(
             (item) => (
               <a
