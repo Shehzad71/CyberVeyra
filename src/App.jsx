@@ -733,27 +733,6 @@ function Footer() {
             </p>
           </div>
         </div>
-        <div className="hidden flex-wrap gap-4 md:flex">
-          {['SME Services', 'OT Services', 'Design Reviews', 'Contact'].map(
-            (item) => (
-              <a
-                key={item}
-                href={
-                  item === 'Contact'
-                    ? '#contact'
-                    : item === 'OT Services'
-                      ? '#ot-services'
-                      : item === 'SME Services'
-                        ? '#sme-services'
-                        : '#design-reviews'
-                }
-                className="transition hover:text-white"
-              >
-                {item}
-              </a>
-            ),
-          )}
-        </div>
       </div>
     </footer>
   )
