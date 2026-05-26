@@ -306,7 +306,7 @@ function Hero() {
                   className="h-4 w-4 rotate-90 transition-transform duration-300 group-open:-rotate-90"
                 />
               </summary>
-              <div className="absolute left-0 right-0 z-20 mt-3 rounded-[24px] border border-white/10 bg-[#07101a]/95 p-2 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
+              <div className="mt-3 rounded-[24px] border border-white/10 bg-[#07101a]/95 p-2 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
                 {mobileServiceOptions.map(([label, href]) => (
                   <a
                     key={label}
@@ -503,7 +503,7 @@ function Founder() {
           </h2>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button href="#contact">Book a Free Consultation</Button>
-            <Button href="#linkedin-profile" variant="secondary">
+            <Button href="https://www.linkedin.com/in/muhammadsnazir/" variant="secondary">
               View LinkedIn Profile
             </Button>
           </div>
